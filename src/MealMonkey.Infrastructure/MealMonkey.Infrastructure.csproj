@@ -15,4 +15,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.sqlserver" Version="7.0.3" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\MealMonkey.Domain\MealMonkey.Domain.csproj" />
+	</ItemGroup>
 </Project>
