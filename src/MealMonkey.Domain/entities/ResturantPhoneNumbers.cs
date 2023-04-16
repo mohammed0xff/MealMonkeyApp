@@ -9,11 +9,11 @@ namespace MealMonkey.Domain.Entities
 {
     public class ResturantPhoneNumbers
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string PhoneNumber { get; set; }
 
         //relationships
-        public Guid ResturantId { get; set; }
+        public string ResturantId { get; set; }
         public Resturant Resturant { get; set; }
     }
 }

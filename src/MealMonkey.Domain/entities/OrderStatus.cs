@@ -9,13 +9,13 @@ namespace MealMonkey.Domain.Entities
 {
     public class OrderStatus
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public DateTime At { get; set; }
 
         // relationships
-        public Guid OrderId { get; set; }
+        public string OrderId { get; set; }
 
-        public Guid StatusId { get; set; }
+        public string StatusId { get; set; }
         public Status Status { get; set; }
     }
 }

@@ -9,12 +9,12 @@ namespace MealMonkey.Domain.Entities
 {
     public class Notification
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Message { get; set; }
         public bool Seen { get; set; }
 
         // relationships
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
 
     }

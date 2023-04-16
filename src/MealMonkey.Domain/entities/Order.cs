@@ -10,7 +10,7 @@ namespace MealMonkey.Domain.Entities
 {
     public class Order
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public decimal DeliveryFee { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal Descount { get; set; }
@@ -18,14 +18,14 @@ namespace MealMonkey.Domain.Entities
 
 
         // relationships
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
 
-        public Guid PaymentMethodId { get; set; }
-        public PaymentMethod PaymentMethodId { get; set; }
+        public string PaymentMethodId { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
 
-        public Guid AddressId { get; set; }
-        public UserAddresses Address { get; set; }
+        public string AddressId { get; set; }
+        public Address Address { get; set; }
 
         public ICollection<OrderStatus> Statuses { get; set; }
     }

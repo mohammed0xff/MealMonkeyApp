@@ -9,7 +9,7 @@ namespace MealMonkey.Domain.Entities
 {
     public class OrderItemIngrediant
     {
-        public Guid OrderItemId { get; set; }
-        public Guid IngrediantId { get; set; }
+        public string OrderItemId { get; set; }
+        public string IngrediantId { get; set; }
     }
 }

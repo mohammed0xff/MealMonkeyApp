@@ -9,7 +9,7 @@ namespace MealMonkey.Domain.Entities
 {
     public class Meal
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string ThumpUrl { get; set; }
         public string PhotoUrl { get; set; }
@@ -18,9 +18,13 @@ namespace MealMonkey.Domain.Entities
 
 
         // relationships
-        public Guid CategoryId { get; set; }
+        public string CategoryId { get; set; }
         public Category Category { get; set; }
 
+        public string ResturantId { get; set; }
+        public Resturant Resturant { get; set; }
+
         public ICollection<Offer> Offers { get; set; }
+        public ICollection<Review> Reviews { get; set; }
     }
 }
