@@ -1,4 +1,5 @@
 ﻿using EntityFramework.Exceptions.SqlServer;
+using MealMonkey.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 
@@ -13,6 +14,8 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfiguration(new UserConfigurations());
+        modelBuilder.ApplyConfiguration(new CartConfigurations());
     }
     
 }
