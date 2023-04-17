@@ -21,6 +21,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfiguration(new IngredientConfigurations());
         modelBuilder.ApplyConfiguration(new OrderConfigurations());
         modelBuilder.ApplyConfiguration(new OrderItemConfigurations());
+        modelBuilder.ApplyConfiguration(new OrderItemIngredientConfigurations());
 
     }
     

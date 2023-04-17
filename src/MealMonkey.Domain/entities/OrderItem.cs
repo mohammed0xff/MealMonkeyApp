@@ -14,5 +14,6 @@ namespace MealMonkey.Domain.Entities
 
         // Navigation Properties
         public Meal Meal { get; set; }
+        public ICollection<OrderItemIngredient> OrderItemIngredients { get; set; }
     }
 }
