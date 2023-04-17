@@ -2,13 +2,14 @@
 {
     public class Offer
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
+        public Guid Id { get; set; }
         public decimal Discount { get; set; }
+        public string Title { get; set; }
+        public DateTime Details { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        //relationships
-        public string MealId { get; set; }
+        // Navigation Properties
+        public ICollection<MealOffer> MealOffers { get; set; }
     }
 }

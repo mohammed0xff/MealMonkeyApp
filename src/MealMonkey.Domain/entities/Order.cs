@@ -1,32 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MealMonkey.Domain.Entities
 {
     public class Order
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public decimal DeliveryFee { get; set; }
         public decimal TotalPrice { get; set; }
-        public decimal Descount { get; set; }
+        public decimal Discount { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string OrderStatus { get; set; }
 
+        // Forign Keys
+        public Guid UserId { get; set; }
+        public Guid PaymentMethodId { get; set; }
+        public Guid AddressId { get; set; }
 
-        // relationships
-        public string UserId { get; set; }
+        // Navigation Properties
         public User User { get; set; }
-
-        public string PaymentMethodId { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
-
-        public string AddressId { get; set; }
         public Address Address { get; set; }
-
-        public ICollection<OrderStatus> Statuses { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }

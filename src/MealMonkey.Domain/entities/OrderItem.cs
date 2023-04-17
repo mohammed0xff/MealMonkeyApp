@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MealMonkey.Domain.Entities
 {
     public class OrderItem
     {
-        public string Id { get; set; }
-        public int Quantity { get; set; }
+        public Guid Id { get; set; }
         public decimal SupTotal { get; set; }
-        public string OrderId { get; set; }
+        public int Quantity { get; set; }
 
 
-        // relationships
-        public string MealId { get; set; }
+        // Forign Keys
+        public Guid MealId { get; set; }
+        public Guid OrderId { get; set; }
+
+        // Navigation Properties
         public Meal Meal { get; set; }
     }
 }

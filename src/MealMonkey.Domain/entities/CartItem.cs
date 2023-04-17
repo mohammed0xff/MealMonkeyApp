@@ -2,15 +2,16 @@
 {
     public class CartItem
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public int Quantity { get; set; }
         public decimal SupTotal { get; set; }
 
 
-        // relationships
-        public string CartId { get; set; }
+        // Forign Keys
+        public Guid CartId { get; set; }
+        public Guid MealId { get; set; }
 
-        public string MealId { get; set; }
+        // Navigation Properties
         public Meal Meal { get; set; }
     }
 }

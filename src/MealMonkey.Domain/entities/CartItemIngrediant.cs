@@ -2,7 +2,9 @@
 {
     public class CartItemIngrediant
     {
-        public string CartItemId { get; set; }
-        public string IngrediantId { get; set; }
+        public Guid CartItemId { get; set; }
+
+        // Forign Keys
+        public Guid IngrediantId { get; set; }
     }
 }

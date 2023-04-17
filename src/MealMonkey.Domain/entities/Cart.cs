@@ -2,7 +2,9 @@
 {
     public class Cart
     {
-        public string Id { get; set; }
-        public string UserId { get; set; }
+        public Guid Id { get; set; }
+
+        // Forign Keys
+        public Guid UserId { get; set; }
     }
 }

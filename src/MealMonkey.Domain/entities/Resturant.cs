@@ -2,14 +2,13 @@
 {
     public class Resturant
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string ThumpUrl { get; set; }
-        public string PhotoUrl { get; set; }
 
-        // relationships
+        // Navigation Properties
         public ICollection<Address> Addresses { get; set; }
         public ICollection<Meal> Meals { get; set; }
+        public ICollection<ResturantPhoneNumber> ResturantPhoneNumbers { get; set; }
     }
 }

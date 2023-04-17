@@ -2,17 +2,19 @@
 {
     public class Review
     {
-        public string Id { get; set; }
-        public Decimal Stars { get; set; }
+        public Guid Id { get; set; }
+        public float Stars { get; set; }
         public string Comment { get; set; }
         public DateTime CreatedAt { get; set; }
+        
 
 
-        // relationship
-        public string UserId { get; set; }
+        // Forign Keys
+        public Guid UserId { get; set; }
+        public Guid MealId { get; set; }
+
+        // Navigation Properties
         public User User { get; set; }
-
-        public string MealId { get; set; }
         public Meal Meal { get; set; }
     }
 }
