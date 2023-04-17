@@ -20,6 +20,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfiguration(new CartItemIngredientConfigurations());
         modelBuilder.ApplyConfiguration(new IngredientConfigurations());
         modelBuilder.ApplyConfiguration(new OrderConfigurations());
+        modelBuilder.ApplyConfiguration(new OrderItemConfigurations());
 
     }
     
