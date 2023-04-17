@@ -22,19 +22,19 @@ namespace MealMonkey.Infrastructure.Configurations
             // Relationships
             // Category
             builder.HasOne<Category>(m => m.Category)
-                .WithMany()
+                .WithMany(c => c.Meals)
                 .HasForeignKey(m => m.CategoryId)
                 .IsRequired();
 
             // Resturant
             builder.HasOne<Resturant>(m => m.Resturant)
-                .WithMany(m => m.Meals)
+                .WithMany(r => r.Meals)
                 .HasForeignKey(m => m.ResturantId)
                 .IsRequired();
 
             // MealType
             builder.HasOne<MealType>(m => m.MealType)
-                .WithMany()
+                .WithMany(mt => mt.Meals)
                 .HasForeignKey(m => m.MealTypeId)
                 .IsRequired();
 
