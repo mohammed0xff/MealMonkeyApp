@@ -14,7 +14,6 @@
 
         // Navigation Properties
         public City City { get; set; }
-        public User User { get; set; }
-        public Resturant Resturant { get; set; }
+       
     }
 }

@@ -24,19 +24,21 @@ namespace MealMonkey.Infrastructure.Configurations
             // Relationships
             // City
             builder.HasOne<City>(a => a.City)
-                .WithMany(c => c.Addresses)
+                .WithMany()
                 .HasForeignKey(a => a.CityId)
                 .IsRequired();
 
             // User
-            builder.HasOne<User>(a => a.User)
+            builder.HasOne<User>()
                 .WithMany(u => u.Addresses)
-                .HasForeignKey(a => a.UserId);
+                .HasForeignKey(a => a.UserId)
+                .IsRequired(false);
 
             // Resturant
-            builder.HasOne<Resturant>(a => a.Resturant)
+            builder.HasOne<Resturant>()
                 .WithMany(r => r.Addresses)
-                .HasForeignKey(a => a.ResturantId);
+                .HasForeignKey(a => a.ResturantId)
+                .IsRequired(false);
         }
     }
 }
