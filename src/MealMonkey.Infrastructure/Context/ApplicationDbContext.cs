@@ -30,7 +30,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfiguration(new PaymentMethodConfigurations());
         modelBuilder.ApplyConfiguration(new ResturantConfigurations());
         modelBuilder.ApplyConfiguration(new ResturantPhoneNumberConfigurations());
-
+        modelBuilder.ApplyConfiguration(new OfferConfigurations());
     }
     
 }
