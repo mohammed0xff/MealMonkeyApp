@@ -1,12 +1,12 @@
 ﻿
 namespace MealMonkey.Domain.Entities
 {
-    public class OrderItemIngrediant
+    public class OrderItemIngredient
     {
         public Guid OrderItemId { get; set; }
         public Guid IngrediantId { get; set; }
 
         // Navigation Properties
-        public ICollection<Ingrediant> Ingrediants { get; set; }
+        public Ingredient Ingrediant { get; set; }
     }
 }

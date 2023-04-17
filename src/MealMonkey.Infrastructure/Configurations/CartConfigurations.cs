@@ -12,7 +12,8 @@ namespace MealMonkey.Infrastructure.Configurations
             // user
             builder.HasOne<User>(chart => chart.User)
                 .WithMany(user => user.Carts)
-                .HasForeignKey(chart => chart.UserId);
+                .HasForeignKey(chart => chart.UserId)
+                .IsRequired();
         }
     }
 }

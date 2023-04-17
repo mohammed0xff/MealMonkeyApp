@@ -1,6 +1,6 @@
 ﻿namespace MealMonkey.Domain.Entities
 {
-    public class Ingrediant
+    public class Ingredient
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

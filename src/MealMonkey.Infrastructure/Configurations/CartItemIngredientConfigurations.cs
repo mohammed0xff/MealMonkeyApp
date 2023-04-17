@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MealMonkey.Infrastructure.Configurations
 {
-    public class CartItemIngredientConfigurations : IEntityTypeConfiguration<CartItemIngrediant>
+    public class CartItemIngredientConfigurations : IEntityTypeConfiguration<CartItemIngredient>
     {
-        public void Configure(EntityTypeBuilder<CartItemIngrediant> builder)
+        public void Configure(EntityTypeBuilder<CartItemIngredient> builder)
         {
             // Primary composite key
             builder.HasKey(cartItemIngrediant =>

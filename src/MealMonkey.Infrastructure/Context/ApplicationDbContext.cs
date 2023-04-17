@@ -16,6 +16,13 @@ public class ApplicationDbContext : DbContext
     {
         modelBuilder.ApplyConfiguration(new UserConfigurations());
         modelBuilder.ApplyConfiguration(new CartConfigurations());
+        modelBuilder.ApplyConfiguration(new CartItemConfigurations());
+        modelBuilder.ApplyConfiguration(new CartItemIngredientConfigurations());
+        modelBuilder.ApplyConfiguration(new IngredientConfigurations());
+        modelBuilder.ApplyConfiguration(new OrderConfigurations());
+        modelBuilder.ApplyConfiguration(new OrderItemConfigurations());
+        modelBuilder.ApplyConfiguration(new OrderItemIngredientConfigurations());
+
     }
     
 }
