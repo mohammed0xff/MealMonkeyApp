@@ -22,7 +22,7 @@ namespace MealMonkey.Infrastructure.Configurations
             // Relationships
             // Category
             builder.HasOne<Category>(m => m.Category)
-                .WithMany(c => c.Meals)
+                .WithMany()
                 .HasForeignKey(m => m.CategoryId)
                 .IsRequired();
 
@@ -34,14 +34,15 @@ namespace MealMonkey.Infrastructure.Configurations
 
             // MealType
             builder.HasOne<MealType>(m => m.MealType)
-                .WithMany(m => m.Meals)
+                .WithMany()
                 .HasForeignKey(m => m.MealTypeId)
                 .IsRequired();
 
             // Review 
             builder.HasMany<Review>(m => m.Reviews)
-                .WithOne<Meal>(r => r.Meal)
-                .HasForeignKey(r => r.MealId);
+                .WithOne(r => r.Meal)
+                .HasForeignKey(r => r.MealId)
+                .IsRequired();
         }
     }
 }
