@@ -6,5 +6,8 @@
 
         // Forign Keys
         public Guid UserId { get; set; }
+
+        // Navigation Properties
+        public User User { get; set; }
     }
 }
