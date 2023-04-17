@@ -27,6 +27,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfiguration(new OrderItemConfigurations());
         modelBuilder.ApplyConfiguration(new OrderItemIngredientConfigurations());
         modelBuilder.ApplyConfiguration(new ReviewConfigurations());
+        modelBuilder.ApplyConfiguration(new PaymentMethodConfigurations());
 
     }
     

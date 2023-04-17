@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MealMonkey.Infrastructure.Configurations
 {
-    internal class ReviewConfigurations : IEntityTypeConfiguration<Review>
+    public class ReviewConfigurations : IEntityTypeConfiguration<Review>
     {
         public void Configure(EntityTypeBuilder<Review> builder)
         {
