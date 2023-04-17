@@ -1,5 +1,4 @@
-﻿
-namespace MealMonkey.Domain.Entities
+﻿namespace MealMonkey.Domain.Entities
 {
     public class Ingrediant
     {

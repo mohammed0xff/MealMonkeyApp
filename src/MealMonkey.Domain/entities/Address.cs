@@ -10,11 +10,11 @@
         // Forign Keys
         public Guid CityId { get; set; }
         public Guid? UserId { get; set; }
-        public Guid ResturantId { get; set; }
+        public Guid? ResturantId { get; set; }
 
         // Navigation Properties
-        public City City { get; set; }  
-        public ICollection<User> Users { get; set; }
-        public ICollection<Resturant> Resturants { get; set; }
+        public City City { get; set; }
+        public User User { get; set; }
+        public Resturant Resturant { get; set; }
     }
 }
