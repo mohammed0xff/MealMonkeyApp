@@ -14,6 +14,10 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.ApplyConfiguration(new MealConfigurations());
+        modelBuilder.ApplyConfiguration(new CategoryConfigurations());
+        modelBuilder.ApplyConfiguration(new CityConfigurations());
+        modelBuilder.ApplyConfiguration(new AddressConfigurations());
         modelBuilder.ApplyConfiguration(new UserConfigurations());
         modelBuilder.ApplyConfiguration(new CartConfigurations());
         modelBuilder.ApplyConfiguration(new CartItemConfigurations());
