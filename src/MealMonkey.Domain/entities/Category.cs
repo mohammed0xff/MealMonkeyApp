@@ -11,5 +11,8 @@ namespace MealMonkey.Domain.Entities
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+
+        // Navigation Properties
+        public ICollection<Meal> Meals { get; set; }
     }
 }
