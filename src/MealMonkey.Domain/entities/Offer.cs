@@ -10,6 +10,6 @@
         public DateTime EndDate { get; set; }
 
         // Navigation Properties
-        public ICollection<MealOffer> MealOffers { get; set; }
+        public ICollection<MealsOffers> MealsOffers { get; set; }
     }
 }
