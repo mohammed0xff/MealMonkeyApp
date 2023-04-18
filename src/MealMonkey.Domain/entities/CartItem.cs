@@ -14,6 +14,5 @@
         // Navigation Properties
         public Meal Meal { get; set; }
         public Cart Cart { get; set; }
-        public ICollection<CartItemIngredient> CartItemIngrediants { get; set; }
     }
 }
