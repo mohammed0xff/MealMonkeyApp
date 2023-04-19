@@ -14,11 +14,12 @@ namespace MealMonkey.Domain.Entities
         public Guid UserId { get; set; }
         public Guid PaymentMethodId { get; set; }
         public Guid AddressId { get; set; }
+        public Guid CartId { get; set; }
 
         // Navigation Properties
         public User User { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public Address Address { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public Cart Cart { get; set; }
     }
 }
