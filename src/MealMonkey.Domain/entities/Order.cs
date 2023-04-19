@@ -1,4 +1,6 @@
 ﻿
+using MealMonkey.Domain.entities;
+
 namespace MealMonkey.Domain.Entities
 {
     public class Order
@@ -21,5 +23,6 @@ namespace MealMonkey.Domain.Entities
         public PaymentMethod PaymentMethod { get; set; }
         public Address Address { get; set; }
         public Cart Cart { get; set; }
+        public ICollection<OrderStatus> Statuses { get; set; }
     }
 }
