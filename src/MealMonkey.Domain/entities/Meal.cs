@@ -24,6 +24,6 @@ namespace MealMonkey.Domain.Entities
         public Resturant Resturant { get; set; }
         public ICollection<Offer> Offers { get; set; }
         public ICollection<Review> Reviews { get; set; }
-        public ICollection<MealOffer> MealOffers { get; set; }
+        public ICollection<MealsOffers> MealsOffers { get; set; }
     }
 }
