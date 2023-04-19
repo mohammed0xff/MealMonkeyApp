@@ -6,9 +6,11 @@
 
         // Forign Keys
         public Guid UserId { get; set; }
+        public Guid? OrderId { get; set; }
 
         // Navigation Properties
         public User User { get; set; }
+        public Order Order { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
     }
 }
