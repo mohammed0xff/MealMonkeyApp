@@ -1,10 +1,9 @@
 ﻿using MealMonkey.Domain.Entities.MealEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
-namespace MealMonkey.Infrastructure.Configurations
+namespace MealMonkey.Infrastructure.Configurations.MealConfigs
 {
-    public class MealOfferConfigurations : IEntityTypeConfiguration<MealsOffers>
+    public class MealsOffersConfigurations : IEntityTypeConfiguration<MealsOffers>
     {
         public void Configure(EntityTypeBuilder<MealsOffers> builder)
         {
