@@ -1,12 +1,12 @@
-﻿using MealMonkey.Domain.Enums;
+﻿using MealMonkey.Domain.entities.Order.Enums;
 
-namespace MealMonkey.Domain.entities
+namespace MealMonkey.Domain.Entities.OrderEntities
 {
     public class OrderStatus
     {
         public Guid Id { get; set; }
         public Guid OrderId { get; set; }
         public DateTime DateOfEntry { get; set; }
-        public Status Status { get; set; }
+        public OrderStatusType Status { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MealMonkey.Domain.Entities
+﻿namespace MealMonkey.Domain.Entities.AddressEntities
 {
     public class Address
     {
@@ -14,6 +14,6 @@
 
         // Navigation Properties
         public City City { get; set; }
-       
+
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MealMonkey.Domain.Entities
+﻿namespace MealMonkey.Domain.Entities.MealEntities
 {
     public class Serving
     {

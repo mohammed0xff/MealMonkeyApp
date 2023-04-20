@@ -1,4 +1,6 @@
-﻿namespace MealMonkey.Domain.Entities
+﻿using MealMonkey.Domain.Entities.MealEntities;
+
+namespace MealMonkey.Domain.Entities.UserEntities
 {
     public class Review
     {
@@ -6,8 +8,6 @@
         public float Stars { get; set; }
         public string Comment { get; set; }
         public DateTime CreatedAt { get; set; }
-        
-
 
         // Forign Keys
         public Guid UserId { get; set; }

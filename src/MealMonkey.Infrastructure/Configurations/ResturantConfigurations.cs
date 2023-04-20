@@ -1,4 +1,4 @@
-﻿using MealMonkey.Domain.Entities;
+﻿using MealMonkey.Domain.Entities.ResturantEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

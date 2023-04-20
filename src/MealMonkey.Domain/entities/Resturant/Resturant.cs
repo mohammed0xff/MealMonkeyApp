@@ -1,4 +1,7 @@
-﻿namespace MealMonkey.Domain.Entities
+﻿using MealMonkey.Domain.Entities.AddressEntities;
+using MealMonkey.Domain.Entities.MealEntities;
+
+namespace MealMonkey.Domain.Entities.ResturantEntities
 {
     public class Resturant
     {

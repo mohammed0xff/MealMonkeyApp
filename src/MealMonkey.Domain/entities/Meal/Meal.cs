@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using MealMonkey.Domain.Entities.UserEntities;
+using MealMonkey.Domain.Entities.ResturantEntities;
 
-namespace MealMonkey.Domain.Entities
+namespace MealMonkey.Domain.Entities.MealEntities
 {
     public class Meal
     {

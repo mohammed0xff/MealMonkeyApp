@@ -1,4 +1,5 @@
-﻿using MealMonkey.Domain.Entities;
+﻿using MealMonkey.Domain.Entities.CartEntities;
+using MealMonkey.Domain.Entities.UserEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -21,17 +21,17 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfiguration(new UserConfigurations());
         modelBuilder.ApplyConfiguration(new CartConfigurations());
         modelBuilder.ApplyConfiguration(new CartItemConfigurations());
-        modelBuilder.ApplyConfiguration(new CartItemIngredientConfigurations());
-        modelBuilder.ApplyConfiguration(new IngredientConfigurations());
+        // modelBuilder.ApplyConfiguration(new CartItemIngredientConfigurations());
+        // modelBuilder.ApplyConfiguration(new IngredientConfigurations());
         modelBuilder.ApplyConfiguration(new OrderConfigurations());
-        modelBuilder.ApplyConfiguration(new OrderItemConfigurations());
-        modelBuilder.ApplyConfiguration(new OrderItemIngredientConfigurations());
+        // modelBuilder.ApplyConfiguration(new OrderItemConfigurations());
+        // modelBuilder.ApplyConfiguration(new OrderItemIngredientConfigurations());
         modelBuilder.ApplyConfiguration(new ReviewConfigurations());
         modelBuilder.ApplyConfiguration(new PaymentMethodConfigurations());
         modelBuilder.ApplyConfiguration(new ResturantConfigurations());
         modelBuilder.ApplyConfiguration(new ResturantPhoneNumberConfigurations());
         modelBuilder.ApplyConfiguration(new OfferConfigurations());
-        modelBuilder.ApplyConfiguration(new MealOfferConfigurations());
+        // modelBuilder.ApplyConfiguration(new MealOfferConfigurations());
     }
     
 }

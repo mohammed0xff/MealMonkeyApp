@@ -1,7 +1,8 @@
-﻿
-using MealMonkey.Domain.entities;
+﻿using MealMonkey.Domain.Entities.AddressEntities;
+using MealMonkey.Domain.Entities.CartEntities;
+using MealMonkey.Domain.Entities.UserEntities;
 
-namespace MealMonkey.Domain.Entities
+namespace MealMonkey.Domain.Entities.OrderEntities
 {
     public class Order
     {

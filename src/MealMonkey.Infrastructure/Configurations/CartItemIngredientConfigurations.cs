@@ -1,4 +1,4 @@
-﻿using MealMonkey.Domain.Entities;
+﻿/*using MealMonkey.Domain.Entities.CartEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,3 +20,4 @@ namespace MealMonkey.Infrastructure.Configurations
         }
     }
 }
+*/

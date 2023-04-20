@@ -1,6 +1,4 @@
-﻿
-
-namespace MealMonkey.Domain.Entities
+﻿namespace MealMonkey.Domain.Entities.UserEntities
 {
     public class Notification
     {
@@ -11,9 +9,8 @@ namespace MealMonkey.Domain.Entities
 
         // Forign Keys
         public Guid UserId { get; set; }
-        
+
         // Navigation Propert
         public User User { get; set; }
-
     }
 }

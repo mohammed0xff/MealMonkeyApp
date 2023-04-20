@@ -1,4 +1,6 @@
-﻿namespace MealMonkey.Domain.Entities
+﻿using MealMonkey.Domain.Entities.MealEntities;
+
+namespace MealMonkey.Domain.Entities.CartEntities
 {
     public class CartItem
     {
