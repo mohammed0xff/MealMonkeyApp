@@ -46,5 +46,6 @@ public class ApplicationDbContext : DbContext
         // User
         modelBuilder.ApplyConfiguration(new UserConfigurations());
         modelBuilder.ApplyConfiguration(new ReviewConfigurations());
+        modelBuilder.ApplyConfiguration(new NotificationConfigurations());
     }
 }
