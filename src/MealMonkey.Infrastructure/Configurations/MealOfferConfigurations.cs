@@ -1,8 +1,7 @@
-﻿using MealMonkey.Domain.Entities;
+﻿/*using MealMonkey.Domain.Entities.MealEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
-
 namespace MealMonkey.Infrastructure.Configurations
 {
     public class MealOfferConfigurations : IEntityTypeConfiguration<MealOffer>
@@ -27,3 +26,4 @@ namespace MealMonkey.Infrastructure.Configurations
         }
     }
 }
+*/

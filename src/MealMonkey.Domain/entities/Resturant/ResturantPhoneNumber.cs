@@ -1,6 +1,4 @@
-﻿
-
-namespace MealMonkey.Domain.Entities
+﻿namespace MealMonkey.Domain.Entities.ResturantEntities
 {
     public class ResturantPhoneNumber
     {

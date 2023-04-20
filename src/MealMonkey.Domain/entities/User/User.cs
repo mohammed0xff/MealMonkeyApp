@@ -1,4 +1,8 @@
-﻿namespace MealMonkey.Domain.Entities
+﻿using MealMonkey.Domain.Entities.AddressEntities;
+using MealMonkey.Domain.Entities.CartEntities;
+using MealMonkey.Domain.Entities.OrderEntities;
+
+namespace MealMonkey.Domain.Entities.UserEntities
 {
     public class User
     {

@@ -1,5 +1,8 @@
-﻿
-namespace MealMonkey.Domain.Entities
+﻿using MealMonkey.Domain.Entities.AddressEntities;
+using MealMonkey.Domain.Entities.CartEntities;
+using MealMonkey.Domain.Entities.UserEntities;
+
+namespace MealMonkey.Domain.Entities.OrderEntities
 {
     public class Order
     {
@@ -8,17 +11,18 @@ namespace MealMonkey.Domain.Entities
         public decimal TotalPrice { get; set; }
         public decimal Discount { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string OrderStatus { get; set; }
 
         // Forign Keys
         public Guid UserId { get; set; }
         public Guid PaymentMethodId { get; set; }
         public Guid AddressId { get; set; }
+        public Guid CartId { get; set; }
 
         // Navigation Properties
         public User User { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public Address Address { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public Cart Cart { get; set; }
+        public ICollection<OrderStatus> Statuses { get; set; }
     }
 }

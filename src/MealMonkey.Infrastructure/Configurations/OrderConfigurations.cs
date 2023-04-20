@@ -1,4 +1,6 @@
-﻿using MealMonkey.Domain.Entities;
+﻿using MealMonkey.Domain.Entities.AddressEntities;
+using MealMonkey.Domain.Entities.OrderEntities;
+using MealMonkey.Domain.Entities.UserEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,7 +15,7 @@ namespace MealMonkey.Infrastructure.Configurations
             builder.Property(order => order.TotalPrice).IsRequired();
             builder.Property(order => order.Discount).IsRequired();
             builder.Property(order => order.CreatedAt).IsRequired();
-            builder.Property(order => order.OrderStatus).IsRequired();
+            // builder.Property(order => order.OrderStatus).IsRequired();
 
             // Relationships with
             // user

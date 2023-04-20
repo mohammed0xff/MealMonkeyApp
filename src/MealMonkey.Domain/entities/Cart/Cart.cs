@@ -1,4 +1,7 @@
-﻿namespace MealMonkey.Domain.Entities
+﻿using MealMonkey.Domain.Entities.OrderEntities;
+using MealMonkey.Domain.Entities.UserEntities;
+
+namespace MealMonkey.Domain.Entities.CartEntities
 {
     public class Cart
     {
