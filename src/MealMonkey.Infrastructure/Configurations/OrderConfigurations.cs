@@ -15,7 +15,7 @@ namespace MealMonkey.Infrastructure.Configurations
             builder.Property(order => order.TotalPrice).IsRequired();
             builder.Property(order => order.Discount).IsRequired();
             builder.Property(order => order.CreatedAt).IsRequired();
-            builder.Property(order => order.OrderStatus).IsRequired();
+            // builder.Property(order => order.OrderStatus).IsRequired();
 
             // Relationships with
             // user

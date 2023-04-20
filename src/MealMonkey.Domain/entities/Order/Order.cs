@@ -11,7 +11,6 @@ namespace MealMonkey.Domain.Entities.OrderEntities
         public decimal TotalPrice { get; set; }
         public decimal Discount { get; set; }
         public DateTime CreatedAt { get; set; }
-        public string OrderStatus { get; set; }
 
         // Forign Keys
         public Guid UserId { get; set; }

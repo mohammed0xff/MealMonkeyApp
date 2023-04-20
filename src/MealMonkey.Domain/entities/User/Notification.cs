@@ -5,7 +5,7 @@
         public Guid Id { get; set; }
         public string Message { get; set; }
         public DateTime SentDate { get; set; }
-        public DateTime ReadDate { get; set; }
+        public DateTime? ReadDate { get; set; }
 
         // Forign Keys
         public Guid UserId { get; set; }
