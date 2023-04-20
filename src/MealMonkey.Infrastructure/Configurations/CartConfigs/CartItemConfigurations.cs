@@ -3,26 +3,27 @@ using MealMonkey.Domain.Entities.MealEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MealMonkey.Infrastructure.Configurations
+namespace MealMonkey.Infrastructure.Configurations.CartConfigs
 {
     public class CartItemConfigurations : IEntityTypeConfiguration<CartItem>
     {
         public void Configure(EntityTypeBuilder<CartItem> builder)
         {
             // Properties
-            builder.Property(cartItem =>  cartItem.Quantity).IsRequired();
-            builder.Property(cartItem =>  cartItem.SupTotal).IsRequired();
+            builder.Property(i => i.Quantity).IsRequired();
+            builder.Property(i => i.SupTotal).IsRequired();
 
             // Relationships with
             // Cart
-            builder.HasOne<Cart>(cartItem => cartItem.Cart)
-                .WithMany(cart => cart.CartItems)
-                .HasForeignKey(cartItem => cartItem.CartId)
+            builder.HasOne(i => i.Cart)
+                .WithMany(c => c.CartItems)
+                .HasForeignKey(c => c.CartId)
                 .IsRequired();
+
             // Meal
-            builder.HasOne<Meal>(cartItem => cartItem.Meal)
-                .WithOne()
-                .HasForeignKey<CartItem>(cartItem => cartItem.MealId)
+            builder.HasOne(i => i.Meal)
+                .WithMany()
+                .HasForeignKey(i => i.MealId)
                 .IsRequired();
         }
     }

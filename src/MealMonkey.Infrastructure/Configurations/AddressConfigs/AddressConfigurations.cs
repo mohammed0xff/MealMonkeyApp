@@ -4,7 +4,7 @@ using MealMonkey.Domain.Entities.UserEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MealMonkey.Infrastructure.Configurations
+namespace MealMonkey.Infrastructure.Configurations.AddressConfigs
 {
     public class AddressConfigurations : IEntityTypeConfiguration<Address>
     {

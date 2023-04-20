@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MealMonkey.Infrastructure.Configurations
+namespace MealMonkey.Infrastructure.Configurations.AddressConfigs
 {
     public class CityConfigurations : IEntityTypeConfiguration<City>
     {
@@ -10,7 +10,7 @@ namespace MealMonkey.Infrastructure.Configurations
         {
             // Properties
             builder.Property(x => x.Name)
-                .HasMaxLength(15)
+                .HasMaxLength(20)
                 .IsRequired();
         }
     }

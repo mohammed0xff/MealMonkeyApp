@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MealMonkey.Infrastructure.Configurations
+namespace MealMonkey.Infrastructure.Configurations.MealConfigs
 {
     public class OfferConfigurations : IEntityTypeConfiguration<Offer>
     {
@@ -11,14 +11,18 @@ namespace MealMonkey.Infrastructure.Configurations
             // Properties
             builder.Property(o => o.Discount)
                 .IsRequired();
+
             builder.Property(o => o.Title)
                 .HasMaxLength(40)
                 .IsRequired();
+
             builder.Property(o => o.Details)
                 .HasMaxLength(250)
                 .IsRequired();
+
             builder.Property(o => o.StartDate)
                 .IsRequired();
+
             builder.Property(o => o.EndDate)
                 .IsRequired();
         }

@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MealMonkey.Infrastructure.Configurations
+namespace MealMonkey.Infrastructure.Configurations.MealConfigs
 {
-    public class CategoryConfigurations : IEntityTypeConfiguration<Category>
+    public class ServingConfigurations : IEntityTypeConfiguration<Serving>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<Serving> builder)
         {
             // Properties
             builder.Property(x => x.Name)
