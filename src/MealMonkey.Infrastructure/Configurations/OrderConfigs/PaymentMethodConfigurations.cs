@@ -2,16 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MealMonkey.Infrastructure.Configurations
+namespace MealMonkey.Infrastructure.Configurations.OrderConfigs
 {
     public class PaymentMethodConfigurations : IEntityTypeConfiguration<PaymentMethod>
     {
         public void Configure(EntityTypeBuilder<PaymentMethod> builder)
         {
             // Properties
-            builder.Property(pm => pm.Fee)
+            builder.Property(p => p.Fee)
                 .IsRequired();
-            builder.Property(pm => pm.Name)
+
+            builder.Property(p => p.Name)
                 .HasMaxLength(80)
                 .IsRequired();
         }

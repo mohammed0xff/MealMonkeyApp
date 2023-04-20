@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace MealMonkey.Infrastructure.Configurations
+namespace MealMonkey.Infrastructure.Configurations.ResturantConfigs
 {
     public class ResturantConfigurations : IEntityTypeConfiguration<Resturant>
     {
@@ -12,6 +12,7 @@ namespace MealMonkey.Infrastructure.Configurations
             builder.Property(r => r.Name)
                 .HasMaxLength(40)
                 .IsRequired();
+
             builder.Property(r => r.Description)
                 .HasMaxLength(250)
                 .IsRequired();
