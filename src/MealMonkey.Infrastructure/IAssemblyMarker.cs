@@ -1,6 +1,6 @@
 ﻿namespace MealMonkey.Infrastructure
 {
-    internal interface IAssemblyMarker
+    public interface IAssemblyMarker
     {
     }
 }
