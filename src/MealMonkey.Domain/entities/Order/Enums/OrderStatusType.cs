@@ -1,4 +1,4 @@
-﻿namespace MealMonkey.Domain.entities.Order.Enums
+﻿namespace MealMonkey.Domain.Entities.Order.Enums
 {
     public enum OrderStatusType
     {

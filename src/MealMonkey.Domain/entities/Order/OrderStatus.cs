@@ -1,4 +1,4 @@
-﻿using MealMonkey.Domain.entities.Order.Enums;
+﻿using MealMonkey.Domain.Entities.Order.Enums;
 
 namespace MealMonkey.Domain.Entities.OrderEntities
 {
