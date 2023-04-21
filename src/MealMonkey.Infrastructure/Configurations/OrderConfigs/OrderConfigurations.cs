@@ -11,9 +11,17 @@ namespace MealMonkey.Infrastructure.Configurations.OrderConfigs
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             // Properties
-            builder.Property(order => order.DeliveryFee).IsRequired();
-            builder.Property(order => order.TotalPrice).IsRequired();
-            builder.Property(order => order.Discount).IsRequired();
+            builder.Property(order => order.DeliveryFee)
+                .IsRequired()
+                .HasPrecision(18, 4);
+            
+            builder.Property(order => order.TotalPrice)
+                .IsRequired()
+                .HasPrecision(18, 4);
+
+            builder.Property(order => order.Discount)
+                .IsRequired()
+                .HasPrecision(18, 4);
 
             builder.Property(order => order.CreatedAt)
                 .HasDefaultValue(DateTime.UtcNow)

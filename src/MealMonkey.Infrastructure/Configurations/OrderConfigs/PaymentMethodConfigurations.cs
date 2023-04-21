@@ -10,7 +10,8 @@ namespace MealMonkey.Infrastructure.Configurations.OrderConfigs
         {
             // Properties
             builder.Property(p => p.Fee)
-                .IsRequired();
+                .IsRequired()
+                .HasPrecision(18, 4);
 
             builder.Property(p => p.Name)
                 .HasMaxLength(80)

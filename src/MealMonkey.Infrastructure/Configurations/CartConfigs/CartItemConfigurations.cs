@@ -11,7 +11,10 @@ namespace MealMonkey.Infrastructure.Configurations.CartConfigs
         {
             // Properties
             builder.Property(i => i.Quantity).IsRequired();
-            builder.Property(i => i.SupTotal).IsRequired();
+
+            builder.Property(i => i.SupTotal)
+                .IsRequired()
+                .HasPrecision(18, 4);
 
             // Relationships with
             // Cart

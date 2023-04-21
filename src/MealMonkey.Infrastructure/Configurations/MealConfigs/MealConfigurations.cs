@@ -15,11 +15,17 @@ namespace MealMonkey.Infrastructure.Configurations.MealConfigs
                 .HasMaxLength(40)
                 .IsRequired();
 
-            builder.Property(m => m.Price).IsRequired();
+            builder.Property(m => m.Price)
+                .IsRequired()
+                .HasPrecision(18, 4);
+            
             builder.Property(m => m.ThumpUrl).IsRequired();
+            
             builder.Property(m => m.PhotoUrl).IsRequired();
-            builder.Property(m => m.AverageRating).IsRequired();
-
+            
+            builder.Property(m => m.AverageRating)
+                .IsRequired()
+                .HasPrecision(18, 4);
 
             // Relationships
             // Category
