@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MealMonkey.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230421001525_initial")]
-    partial class initial
+    [Migration("20230422164337_Initial_Migration")]
+    partial class Initial_Migration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,7 +62,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Address");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.AddressEntities.City", b =>
@@ -78,7 +78,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("City");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.CartEntities.Cart", b =>
@@ -101,7 +101,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Cart");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.CartEntities.CartItem", b =>
@@ -129,7 +129,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("MealId");
 
-                    b.ToTable("CartItem");
+                    b.ToTable("CartItems", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.MealEntities.Category", b =>
@@ -145,7 +145,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.MealEntities.Meal", b =>
@@ -197,7 +197,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("ServingId");
 
-                    b.ToTable("Meal");
+                    b.ToTable("Meals", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.MealEntities.MealType", b =>
@@ -213,7 +213,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MealType");
+                    b.ToTable("MealTypes", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.MealEntities.MealsOffers", b =>
@@ -263,7 +263,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("MealId");
 
-                    b.ToTable("Offer");
+                    b.ToTable("Offers", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.MealEntities.Serving", b =>
@@ -279,7 +279,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Serving");
+                    b.ToTable("Servings", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.OrderEntities.Order", b =>
@@ -297,7 +297,7 @@ namespace MealMonkey.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 0, 15, 25, 557, DateTimeKind.Utc).AddTicks(5607));
+                        .HasDefaultValue(new DateTime(2023, 4, 22, 16, 43, 37, 245, DateTimeKind.Utc).AddTicks(8571));
 
                     b.Property<decimal>("DeliveryFee")
                         .HasPrecision(18, 4)
@@ -325,7 +325,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Order");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.OrderEntities.OrderStatus", b =>
@@ -337,7 +337,7 @@ namespace MealMonkey.Infrastructure.Migrations
                     b.Property<DateTime>("DateOfEntry")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 0, 15, 25, 558, DateTimeKind.Utc).AddTicks(308));
+                        .HasDefaultValue(new DateTime(2023, 4, 22, 16, 43, 37, 246, DateTimeKind.Utc).AddTicks(7298));
 
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
@@ -350,7 +350,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderStatus");
+                    b.ToTable("OrderStatuses", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.OrderEntities.PaymentMethod", b =>
@@ -370,7 +370,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethod");
+                    b.ToTable("PaymentMethods", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.ResturantEntities.Resturant", b =>
@@ -391,7 +391,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Resturant");
+                    b.ToTable("Resturants", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.ResturantEntities.ResturantPhoneNumber", b =>
@@ -410,9 +410,12 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique();
+
                     b.HasIndex("ResturantId");
 
-                    b.ToTable("ResturantPhoneNumber");
+                    b.ToTable("ResturantsPhoneNumbers", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.UserEntities.Notification", b =>
@@ -432,7 +435,7 @@ namespace MealMonkey.Infrastructure.Migrations
                     b.Property<DateTime>("SentDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 0, 15, 25, 560, DateTimeKind.Utc).AddTicks(2132));
+                        .HasDefaultValue(new DateTime(2023, 4, 22, 16, 43, 37, 249, DateTimeKind.Utc).AddTicks(4658));
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -441,7 +444,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notification");
+                    b.ToTable("Notifications", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.UserEntities.Review", b =>
@@ -458,7 +461,7 @@ namespace MealMonkey.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 0, 15, 25, 559, DateTimeKind.Utc).AddTicks(1066));
+                        .HasDefaultValue(new DateTime(2023, 4, 22, 16, 43, 37, 248, DateTimeKind.Utc).AddTicks(9659));
 
                     b.Property<Guid>("MealId")
                         .HasColumnType("uniqueidentifier");
@@ -475,7 +478,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Review");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.UserEntities.User", b =>
@@ -487,7 +490,7 @@ namespace MealMonkey.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 4, 21, 0, 15, 25, 559, DateTimeKind.Utc).AddTicks(81));
+                        .HasDefaultValue(new DateTime(2023, 4, 22, 16, 43, 37, 248, DateTimeKind.Utc).AddTicks(7450));
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -520,7 +523,7 @@ namespace MealMonkey.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("MealMonkey.Domain.Entities.AddressEntities.Address", b =>

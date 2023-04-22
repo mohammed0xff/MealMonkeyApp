@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MealMonkey.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial_Migration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -20,11 +20,11 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "City",
+                name: "Cities",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -32,11 +32,11 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_City", x => x.Id);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MealType",
+                name: "MealTypes",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -44,11 +44,11 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MealType", x => x.Id);
+                    table.PrimaryKey("PK_MealTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "PaymentMethod",
+                name: "PaymentMethods",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -57,11 +57,11 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PaymentMethod", x => x.Id);
+                    table.PrimaryKey("PK_PaymentMethods", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Resturant",
+                name: "Resturants",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -70,11 +70,11 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Resturant", x => x.Id);
+                    table.PrimaryKey("PK_Resturants", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Serving",
+                name: "Servings",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -82,11 +82,11 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Serving", x => x.Id);
+                    table.PrimaryKey("PK_Servings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -96,15 +96,15 @@ namespace MealMonkey.Infrastructure.Migrations
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     UserType = table.Column<int>(type: "int", nullable: false),
                     HashPassword = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 21, 0, 15, 25, 559, DateTimeKind.Utc).AddTicks(81))
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 22, 16, 43, 37, 248, DateTimeKind.Utc).AddTicks(7450))
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ResturantPhoneNumber",
+                name: "ResturantsPhoneNumbers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -113,17 +113,17 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ResturantPhoneNumber", x => x.Id);
+                    table.PrimaryKey("PK_ResturantsPhoneNumbers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ResturantPhoneNumber_Resturant_ResturantId",
+                        name: "FK_ResturantsPhoneNumbers_Resturants_ResturantId",
                         column: x => x.ResturantId,
-                        principalTable: "Resturant",
+                        principalTable: "Resturants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Meal",
+                name: "Meals",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -139,35 +139,35 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Meal", x => x.Id);
+                    table.PrimaryKey("PK_Meals", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Meal_Category_CategoryId",
+                        name: "FK_Meals_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Meal_MealType_MealTypeId",
+                        name: "FK_Meals_MealTypes_MealTypeId",
                         column: x => x.MealTypeId,
-                        principalTable: "MealType",
+                        principalTable: "MealTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Meal_Resturant_ResturantId",
+                        name: "FK_Meals_Resturants_ResturantId",
                         column: x => x.ResturantId,
-                        principalTable: "Resturant",
+                        principalTable: "Resturants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Meal_Serving_ServingId",
+                        name: "FK_Meals_Servings_ServingId",
                         column: x => x.ServingId,
-                        principalTable: "Serving",
+                        principalTable: "Servings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Address",
+                name: "Addresses",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -180,48 +180,48 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Address", x => x.Id);
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Address_City_CityId",
+                        name: "FK_Addresses_Cities_CityId",
                         column: x => x.CityId,
-                        principalTable: "City",
+                        principalTable: "Cities",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Address_Resturant_ResturantId",
+                        name: "FK_Addresses_Resturants_ResturantId",
                         column: x => x.ResturantId,
-                        principalTable: "Resturant",
+                        principalTable: "Resturants",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Address_User_UserId",
+                        name: "FK_Addresses_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Notification",
+                name: "Notifications",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Message = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    SentDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 21, 0, 15, 25, 560, DateTimeKind.Utc).AddTicks(2132)),
+                    SentDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 22, 16, 43, 37, 249, DateTimeKind.Utc).AddTicks(4658)),
                     ReadDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Notification", x => x.Id);
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Notification_User_UserId",
+                        name: "FK_Notifications_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Offer",
+                name: "Offers",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -234,51 +234,51 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Offer", x => x.Id);
+                    table.PrimaryKey("PK_Offers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Offer_Meal_MealId",
+                        name: "FK_Offers_Meals_MealId",
                         column: x => x.MealId,
-                        principalTable: "Meal",
+                        principalTable: "Meals",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Review",
+                name: "Reviews",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Stars = table.Column<float>(type: "real", nullable: false),
                     Comment = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 21, 0, 15, 25, 559, DateTimeKind.Utc).AddTicks(1066)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 22, 16, 43, 37, 248, DateTimeKind.Utc).AddTicks(9659)),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MealId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Review", x => x.Id);
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Review_Meal_MealId",
+                        name: "FK_Reviews_Meals_MealId",
                         column: x => x.MealId,
-                        principalTable: "Meal",
+                        principalTable: "Meals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Review_User_UserId",
+                        name: "FK_Reviews_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeliveryFee = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(18,4)", precision: 18, scale: 4, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 21, 0, 15, 25, 557, DateTimeKind.Utc).AddTicks(5607)),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 22, 16, 43, 37, 245, DateTimeKind.Utc).AddTicks(8571)),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PaymentMethodId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AddressId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -286,23 +286,23 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Order", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Order_Address_AddressId",
+                        name: "FK_Orders_Addresses_AddressId",
                         column: x => x.AddressId,
-                        principalTable: "Address",
+                        principalTable: "Addresses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Order_PaymentMethod_PaymentMethodId",
+                        name: "FK_Orders_PaymentMethods_PaymentMethodId",
                         column: x => x.PaymentMethodId,
-                        principalTable: "PaymentMethod",
+                        principalTable: "PaymentMethods",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Order_User_UserId",
+                        name: "FK_Orders_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -318,21 +318,21 @@ namespace MealMonkey.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_MealsOffers", x => new { x.MealId, x.OfferId });
                     table.ForeignKey(
-                        name: "FK_MealsOffers_Meal_MealId",
+                        name: "FK_MealsOffers_Meals_MealId",
                         column: x => x.MealId,
-                        principalTable: "Meal",
+                        principalTable: "Meals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MealsOffers_Offer_OfferId",
+                        name: "FK_MealsOffers_Offers_OfferId",
                         column: x => x.OfferId,
-                        principalTable: "Offer",
+                        principalTable: "Offers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cart",
+                name: "Carts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -341,42 +341,42 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cart", x => x.Id);
+                    table.PrimaryKey("PK_Carts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cart_Order_OrderId",
+                        name: "FK_Carts_Orders_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "Order",
+                        principalTable: "Orders",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Cart_User_UserId",
+                        name: "FK_Carts_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderStatus",
+                name: "OrderStatuses",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OrderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DateOfEntry = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 21, 0, 15, 25, 558, DateTimeKind.Utc).AddTicks(308)),
+                    DateOfEntry = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 4, 22, 16, 43, 37, 246, DateTimeKind.Utc).AddTicks(7298)),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderStatus", x => x.Id);
+                    table.PrimaryKey("PK_OrderStatuses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderStatus_Order_OrderId",
+                        name: "FK_OrderStatuses_Orders_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "Order",
+                        principalTable: "Orders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "CartItem",
+                name: "CartItems",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -387,76 +387,76 @@ namespace MealMonkey.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CartItem", x => x.Id);
+                    table.PrimaryKey("PK_CartItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CartItem_Cart_CartId",
+                        name: "FK_CartItems_Carts_CartId",
                         column: x => x.CartId,
-                        principalTable: "Cart",
+                        principalTable: "Carts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CartItem_Meal_MealId",
+                        name: "FK_CartItems_Meals_MealId",
                         column: x => x.MealId,
-                        principalTable: "Meal",
+                        principalTable: "Meals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Address_CityId",
-                table: "Address",
+                name: "IX_Addresses_CityId",
+                table: "Addresses",
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Address_ResturantId",
-                table: "Address",
+                name: "IX_Addresses_ResturantId",
+                table: "Addresses",
                 column: "ResturantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Address_UserId",
-                table: "Address",
+                name: "IX_Addresses_UserId",
+                table: "Addresses",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_OrderId",
-                table: "Cart",
+                name: "IX_CartItems_CartId",
+                table: "CartItems",
+                column: "CartId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItems_MealId",
+                table: "CartItems",
+                column: "MealId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Carts_OrderId",
+                table: "Carts",
                 column: "OrderId",
                 unique: true,
                 filter: "[OrderId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cart_UserId",
-                table: "Cart",
+                name: "IX_Carts_UserId",
+                table: "Carts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItem_CartId",
-                table: "CartItem",
-                column: "CartId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CartItem_MealId",
-                table: "CartItem",
-                column: "MealId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Meal_CategoryId",
-                table: "Meal",
+                name: "IX_Meals_CategoryId",
+                table: "Meals",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meal_MealTypeId",
-                table: "Meal",
+                name: "IX_Meals_MealTypeId",
+                table: "Meals",
                 column: "MealTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meal_ResturantId",
-                table: "Meal",
+                name: "IX_Meals_ResturantId",
+                table: "Meals",
                 column: "ResturantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Meal_ServingId",
-                table: "Meal",
+                name: "IX_Meals_ServingId",
+                table: "Meals",
                 column: "ServingId");
 
             migrationBuilder.CreateIndex(
@@ -465,48 +465,54 @@ namespace MealMonkey.Infrastructure.Migrations
                 column: "OfferId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Notification_UserId",
-                table: "Notification",
+                name: "IX_Notifications_UserId",
+                table: "Notifications",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Offer_MealId",
-                table: "Offer",
+                name: "IX_Offers_MealId",
+                table: "Offers",
                 column: "MealId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_AddressId",
-                table: "Order",
+                name: "IX_Orders_AddressId",
+                table: "Orders",
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_PaymentMethodId",
-                table: "Order",
+                name: "IX_Orders_PaymentMethodId",
+                table: "Orders",
                 column: "PaymentMethodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_UserId",
-                table: "Order",
+                name: "IX_Orders_UserId",
+                table: "Orders",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderStatus_OrderId",
-                table: "OrderStatus",
+                name: "IX_OrderStatuses_OrderId",
+                table: "OrderStatuses",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResturantPhoneNumber_ResturantId",
-                table: "ResturantPhoneNumber",
+                name: "IX_ResturantsPhoneNumbers_PhoneNumber",
+                table: "ResturantsPhoneNumbers",
+                column: "PhoneNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ResturantsPhoneNumbers_ResturantId",
+                table: "ResturantsPhoneNumbers",
                 column: "ResturantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Review_MealId",
-                table: "Review",
+                name: "IX_Reviews_MealId",
+                table: "Reviews",
                 column: "MealId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Review_UserId",
-                table: "Review",
+                name: "IX_Reviews_UserId",
+                table: "Reviews",
                 column: "UserId");
         }
 
@@ -514,58 +520,58 @@ namespace MealMonkey.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CartItem");
+                name: "CartItems");
 
             migrationBuilder.DropTable(
                 name: "MealsOffers");
 
             migrationBuilder.DropTable(
-                name: "Notification");
+                name: "Notifications");
 
             migrationBuilder.DropTable(
-                name: "OrderStatus");
+                name: "OrderStatuses");
 
             migrationBuilder.DropTable(
-                name: "ResturantPhoneNumber");
+                name: "ResturantsPhoneNumbers");
 
             migrationBuilder.DropTable(
-                name: "Review");
+                name: "Reviews");
 
             migrationBuilder.DropTable(
-                name: "Cart");
+                name: "Carts");
 
             migrationBuilder.DropTable(
-                name: "Offer");
+                name: "Offers");
 
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Meal");
+                name: "Meals");
 
             migrationBuilder.DropTable(
-                name: "Address");
+                name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "PaymentMethod");
+                name: "PaymentMethods");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "MealType");
+                name: "MealTypes");
 
             migrationBuilder.DropTable(
-                name: "Serving");
+                name: "Servings");
 
             migrationBuilder.DropTable(
-                name: "City");
+                name: "Cities");
 
             migrationBuilder.DropTable(
-                name: "Resturant");
+                name: "Resturants");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
         }
     }
 }
