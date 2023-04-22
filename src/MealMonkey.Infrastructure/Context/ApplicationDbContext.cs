@@ -1,11 +1,17 @@
-﻿using EntityFramework.Exceptions.SqlServer;
+﻿using Microsoft.EntityFrameworkCore;
+using EntityFramework.Exceptions.SqlServer;
+using MealMonkey.Domain.Entities.AddressEntities;
+using MealMonkey.Domain.Entities.CartEntities;
+using MealMonkey.Domain.Entities.MealEntities;
+using MealMonkey.Domain.Entities.OrderEntities;
+using MealMonkey.Domain.Entities.ResturantEntities;
+using MealMonkey.Domain.Entities.UserEntities;
 using MealMonkey.Infrastructure.Configurations.AddressConfigs;
 using MealMonkey.Infrastructure.Configurations.CartConfigs;
 using MealMonkey.Infrastructure.Configurations.MealConfigs;
 using MealMonkey.Infrastructure.Configurations.OrderConfigs;
 using MealMonkey.Infrastructure.Configurations.ResturantConfigs;
 using MealMonkey.Infrastructure.Configurations.UserConfigs;
-using Microsoft.EntityFrameworkCore;
 
 public class ApplicationDbContext : DbContext
 {
@@ -15,6 +21,35 @@ public class ApplicationDbContext : DbContext
         base.OnConfiguring(optionsBuilder);
         optionsBuilder.UseExceptionProcessor();
     }
+
+    // User 
+    public DbSet<User> Users { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
+    
+    // Resturant
+    public DbSet<Resturant> Resturants { get; set; }
+    public DbSet<ResturantPhoneNumber> ResturantsPhoneNumbers { get; set; }
+
+    // Address
+    public DbSet<Address> Addresses { get; set; }
+    public DbSet<City> Cities { get; set; }
+
+    // Meal
+    public DbSet<Meal> Meals { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Offer> Offers { get; set; }
+    public DbSet<Serving> Servings { get; set; }
+    public DbSet<MealType> MealTypes { get; set; }
+    
+    // Order
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<OrderStatus> OrderStatuses { get; set; }
+    public DbSet<PaymentMethod> PaymentMethods { get; set; }
+
+    // Cart
+    public DbSet<Cart> Carts { get; set; }
+    public DbSet<CartItem> CartItems { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
