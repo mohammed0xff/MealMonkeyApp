@@ -9,7 +9,9 @@ namespace MealMonkey.Infrastructure.Configurations.UserConfigs
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasKey(u => u.Id);
-
+            
+            builder.ToTable(nameof(ApplicationDbContext.Users));
+            
             builder.Property(u => u.FirstName)
                 .IsRequired()
                 .HasMaxLength(15)

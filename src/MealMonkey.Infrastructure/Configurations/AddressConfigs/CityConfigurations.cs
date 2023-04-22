@@ -9,6 +9,10 @@ namespace MealMonkey.Infrastructure.Configurations.AddressConfigs
         public void Configure(EntityTypeBuilder<City> builder)
         {
             // Properties
+            builder.HasKey(x => x.Id);
+
+            builder.ToTable(nameof(ApplicationDbContext.Cities));
+
             builder.Property(x => x.Name)
                 .HasMaxLength(20)
                 .IsRequired();

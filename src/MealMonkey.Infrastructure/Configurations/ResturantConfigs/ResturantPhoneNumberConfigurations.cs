@@ -9,6 +9,13 @@ namespace MealMonkey.Infrastructure.Configurations.ResturantConfigs
         public void Configure(EntityTypeBuilder<ResturantPhoneNumber> builder)
         {
             // Properties
+            builder.HasKey(x => x.Id);
+            
+            builder.ToTable(nameof(ApplicationDbContext.ResturantsPhoneNumbers));
+
+            builder.HasIndex(x => x.PhoneNumber)
+                .IsUnique();
+            
             builder.Property(p => p.PhoneNumber)
                 .HasMaxLength(15)
                 .IsRequired();

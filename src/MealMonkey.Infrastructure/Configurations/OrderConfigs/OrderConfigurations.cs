@@ -11,6 +11,10 @@ namespace MealMonkey.Infrastructure.Configurations.OrderConfigs
         public void Configure(EntityTypeBuilder<Order> builder)
         {
             // Properties
+            builder.HasKey(x => x.Id);
+
+            builder.ToTable(nameof(ApplicationDbContext.Orders));
+
             builder.Property(order => order.DeliveryFee)
                 .IsRequired()
                 .HasPrecision(18, 4);

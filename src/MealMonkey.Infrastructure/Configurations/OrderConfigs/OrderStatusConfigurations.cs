@@ -10,6 +10,10 @@ namespace MealMonkey.Infrastructure.Configurations.OrderConfigs
         public void Configure(EntityTypeBuilder<OrderStatus> builder)
         {
             // Properties
+            builder.HasKey(x => x.Id);
+            
+            builder.ToTable(nameof(ApplicationDbContext.OrderStatuses));
+
             builder.Property(s => s.DateOfEntry)
                 .IsRequired()
                 .HasDefaultValue(DateTime.UtcNow);

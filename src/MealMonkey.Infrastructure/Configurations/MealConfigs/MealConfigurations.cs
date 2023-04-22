@@ -11,6 +11,10 @@ namespace MealMonkey.Infrastructure.Configurations.MealConfigs
         public void Configure(EntityTypeBuilder<Meal> builder)
         {
             //Properties
+            builder.HasKey(x => x.Id);
+
+            builder.ToTable(nameof(ApplicationDbContext.Meals));
+
             builder.Property(m => m.Name)
                 .HasMaxLength(40)
                 .IsRequired();

@@ -9,6 +9,10 @@ namespace MealMonkey.Infrastructure.Configurations.OrderConfigs
         public void Configure(EntityTypeBuilder<PaymentMethod> builder)
         {
             // Properties
+            builder.HasKey(x => x.Id);
+            
+            builder.ToTable(nameof(ApplicationDbContext.PaymentMethods));
+
             builder.Property(p => p.Fee)
                 .IsRequired()
                 .HasPrecision(18, 4);

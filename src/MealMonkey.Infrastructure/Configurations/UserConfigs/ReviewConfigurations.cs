@@ -11,6 +11,9 @@ namespace MealMonkey.Infrastructure.Configurations.UserConfigs
             // Properties
             builder.Property(r => r.Stars)
               .IsRequired();
+            
+            builder.ToTable(nameof(ApplicationDbContext.Reviews));
+
 
             builder.Property(r => r.Comment)
               .IsRequired()

@@ -10,6 +10,10 @@ namespace MealMonkey.Infrastructure.Configurations.CartConfigs
         public void Configure(EntityTypeBuilder<CartItem> builder)
         {
             // Properties
+            builder.HasKey(x => x.Id);
+
+            builder.ToTable(nameof(ApplicationDbContext.CartItems));
+
             builder.Property(i => i.Quantity).IsRequired();
 
             builder.Property(i => i.SupTotal)

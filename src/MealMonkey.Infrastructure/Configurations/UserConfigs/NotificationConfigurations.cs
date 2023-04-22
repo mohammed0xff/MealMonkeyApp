@@ -13,6 +13,8 @@ namespace MealMonkey.Infrastructure.Configurations.UserConfigs
                 .IsRequired()
                 .HasMaxLength(200);
 
+            builder.ToTable(nameof(ApplicationDbContext.Notifications));
+
             builder.Property(n => n.SentDate)
                 .IsRequired()
                 .HasDefaultValue(DateTime.UtcNow);

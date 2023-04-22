@@ -9,6 +9,10 @@ namespace MealMonkey.Infrastructure.Configurations.MealConfigs
         public void Configure(EntityTypeBuilder<Offer> builder)
         {
             // Properties
+            builder.HasKey(x => x.Id);
+
+            builder.ToTable(nameof(ApplicationDbContext.Offers));
+
             builder.Property(o => o.Discount)
                 .IsRequired()
                 .HasPrecision(18, 4);

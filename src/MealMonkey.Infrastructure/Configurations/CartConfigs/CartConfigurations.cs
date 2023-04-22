@@ -10,6 +10,10 @@ namespace MealMonkey.Infrastructure.Configurations.CartConfigs
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
+            builder.HasKey(x => x.Id);
+
+            builder.ToTable(nameof(ApplicationDbContext.Carts));
+
             // Relationships with
             // User
             builder.HasOne(c => c.User)
