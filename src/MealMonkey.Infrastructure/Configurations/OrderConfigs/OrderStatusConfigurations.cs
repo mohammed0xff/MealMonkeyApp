@@ -1,5 +1,6 @@
 ﻿using MealMonkey.Domain.Entities.AddressEntities;
 using MealMonkey.Domain.Entities.OrderEntities;
+using MealMonkey.Domain.OrderEntities.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,7 +21,7 @@ namespace MealMonkey.Infrastructure.Configurations.OrderConfigs
 
             builder.Property(s => s.Status)
                 .IsRequired()
-                .HasConversion<string>();
+                .HasConversion(s => s.ToString(), sAsString => (OrderStatusType)Enum.Parse(typeof(OrderStatusType), sAsString));
 
             // Relationships
             //Order
