@@ -11,6 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigurePersistence(builder.Configuration);
 builder.Services.AddIdentityConfig();
+// Add Authentication
+builder.Services.AddAuthenticationConfig(builder.Configuration);
 
 var app = builder.Build();
 
