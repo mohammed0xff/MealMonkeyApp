@@ -10,7 +10,7 @@ namespace MealMonkey.Domain.Entities.UserEntities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FullName => FirstName + " " + LastName
+        public string FullName => FirstName + " " + LastName;
 
         // Navigation Properties
         public ICollection<RefreshToken> RefreshTokens { get; set; }

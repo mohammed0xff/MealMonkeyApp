@@ -9,8 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.ConfigurePersistence(builder.Configuration);
 builder.Services.AddIdentityConfig();
+builder.Services.RegisterCustomServises(builder.Configuration);
+
+
 // Add Authentication
 builder.Services.AddAuthenticationConfig(builder.Configuration);
 

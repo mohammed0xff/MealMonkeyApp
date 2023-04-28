@@ -7,12 +7,10 @@ namespace MealMonkey.Api.Configurations
 {
     public static class IdentityConfigExtensions
     {
-        public static IServiceCollection AddIdentityConfig(
-            this IServiceCollection services
-            )
+        public static IServiceCollection AddIdentityConfig(this IServiceCollection services)
         {
             // Add identity services
-            services.AddIdentity<ApplicationUser, IdentityRole<string>>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 // Configure password requirements
                 options.Password.RequireDigit = true;
