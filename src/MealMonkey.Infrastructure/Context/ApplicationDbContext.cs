@@ -13,9 +13,9 @@ using MealMonkey.Infrastructure.Configurations.OrderConfigs;
 using MealMonkey.Infrastructure.Configurations.ResturantConfigs;
 using MealMonkey.Infrastructure.Configurations.UserConfigs;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using MealMonkey.Domain.entities.User;
 
-public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,10 +23,13 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
         base.OnConfiguring(optionsBuilder);
         optionsBuilder.UseExceptionProcessor();
     }
+
+
     // User
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Notification> Notifications { get; set; }
-    
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
+
     // Resturant
     public DbSet<Resturant> Resturants { get; set; }
     public DbSet<ResturantPhoneNumber> ResturantsPhoneNumbers { get; set; }

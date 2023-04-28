@@ -14,7 +14,7 @@ namespace MealMonkey.Domain.Entities.UserEntities
         public Guid MealId { get; set; }
 
         // Navigation Properties
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
         public Meal Meal { get; set; }
     }
 }

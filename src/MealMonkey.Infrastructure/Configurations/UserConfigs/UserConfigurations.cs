@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MealMonkey.Infrastructure.Configurations.UserConfigs
 {
-    public class UserConfigurations : IEntityTypeConfiguration<User>
+    public class UserConfigurations : IEntityTypeConfiguration<ApplicationUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             builder.HasKey(u => u.Id);
 
