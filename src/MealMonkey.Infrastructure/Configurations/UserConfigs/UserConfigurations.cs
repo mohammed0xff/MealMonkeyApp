@@ -11,7 +11,7 @@ namespace MealMonkey.Infrastructure.Configurations.UserConfigs
             builder.HasKey(u => u.Id);
 
             builder.Property(u => u.Id).ValueGeneratedOnAdd();
-            
+
             builder.Property(u => u.FirstName)
                 .IsRequired()
                 .HasMaxLength(15)
@@ -21,6 +21,14 @@ namespace MealMonkey.Infrastructure.Configurations.UserConfigs
                 .IsRequired()
                 .HasMaxLength(15)
                 .IsUnicode();
+
+
+            // Relationships
+            // RefreshToken
+            builder.HasMany(u => u.RefreshTokens)
+                .WithOne()
+                .HasForeignKey(r => r.UserId)
+                .IsRequired();
         }
     }
 }
