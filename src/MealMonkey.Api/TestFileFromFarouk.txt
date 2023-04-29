@@ -1,1 +1,66 @@
 this file uploaded by "Farouk" just to test (-_-)
+
+Add: AuthanticationService, MailingService, ManageService To Manage Authantication (14)
+
+ public async Task<ServiceResult> ForgetPasswordAsync(string email)
+        {
+            ServiceResult serviceResult = new();
+
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user is null)
+            {
+                serviceResult.Msg = "Sorry WE cant Found Your Account";
+                return serviceResult;
+            }
+
+            // Create OTP
+            string otp = Guid.NewGuid().ToString("N");
+
+
+            // Send Email Message To this Address
+            string template = $"<p>Your OTP to resest Your password is {otp} never share this otp with any body</p>";
+            var result = await _mailingService.SendEmailAsync(email, "Forget Password", template);
+
+            if (!result)
+            {
+                serviceResult.Msg = "Something went wrong Please Try Again";
+                return serviceResult;
+            }
+
+            serviceResult.IsSucceded = true;
+            serviceResult.Msg = "We sent Message to your email contain the OTP";
+
+            return serviceResult;
+        }
+
+        //public async Task<ServiceResult> ResetPasswordAsync(ResetPasswordDto dto)
+        //{
+        //    ServiceResult serviceResult = new();
+
+        //    var user = await _userManager.FindByEmailAsync(dto.Email);
+        //    if (user is null || user.OTP != dto.OTP || !user.IsActiveOtp)
+        //    {
+        //        serviceResult.Msg = "Sorry WE cant Found Your Account";
+        //        return serviceResult;
+        //    }
+
+        //    // everything is Okay Now Try to change the password
+        //    var result = await _userManager.ResetPasswordAsync(user,"sds", dto.NewPassword);
+
+
+
+        //    // Send Email Message To this Address
+        //    string template = $"<p>Your OTP to resest Your password is {otp} never share this otp with any body</p>";
+        //    var result = await _MailingService.SendEmailAsync(email, "Forget Password", template);
+
+        //    if (!result)
+        //    {
+        //        serviceResult.Msg = "Something went wrong Please Try Again";
+        //        return serviceResult;
+        //    }
+
+        //    serviceResult.IsSucceded = true;
+        //    serviceResult.Msg = "We sent Message to your email contain the OTP";
+
+        //    return serviceResult;
+        //}

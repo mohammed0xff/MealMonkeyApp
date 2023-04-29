@@ -64,7 +64,6 @@ namespace MealMonkey.Application.Services.Authantication
             return response;
         }
 
-
         public async Task<AuthanticationResponseDto> LoginAsync(LoginDto model)
         {
             AuthanticationResponseDto response = new();
@@ -82,7 +81,6 @@ namespace MealMonkey.Application.Services.Authantication
 
             return response;
         }
-
 
         public async Task<ServiceResult> ChangePasswordAsync(ChangePasswordDto model, string currentUserId)
         {
@@ -109,6 +107,7 @@ namespace MealMonkey.Application.Services.Authantication
 
             return serviceResult;
         }
+
 
 
 
@@ -181,6 +180,94 @@ namespace MealMonkey.Application.Services.Authantication
 
 
 
+
+        // Forget Password
+        public async Task<ServiceResult> ForgetPasswordAsync(ForgetPasswordDto model)
+        {
+            ServiceResult result = new();
+
+            // Check Email
+            var userInDb = await _userManager.FindByEmailAsync(model.Email);
+            if (userInDb is null /*|| !userInDb.EmailConfirmed*/)
+            {
+                result.Msg = "Sorry WE cant Found Your Account";
+
+                return result;
+            }
+
+            // Generate OTP
+            var otpValue = GenerateOTP();
+
+            // Seed otp to database
+            RefreshToken otp = new()
+            {
+                Token = otpValue.ToString(),
+                CreatedOn = DateTime.UtcNow,
+                ExpiresOn = DateTime.UtcNow.AddMinutes(_jwt.DurationInMinutes),
+                UserId = userInDb.Id
+            };
+            _context.RefreshTokens.Add(otp);
+            _context.SaveChanges();
+
+            // send email with Otp
+            string template = $"<p>Your OTP to resest Your password is ( {otp.Token} ) never share this otp with any one.</p> <p>This OTP will Expire On ( {otp.ExpiresOn} )</p> <p>You Get this Message Because WE Have A request to reset password</p>";
+            result.IsSucceded = _mailingService.SendEmail(model.Email, "Forget Password", template);
+            result.Msg = result.IsSucceded ? "We send You Message to your email" : "something went wrong, please try Again";
+
+            return result;
+        }
+
+        public async Task<ServiceResult> ResetPasswordAsync(ResetPasswordDto model)
+        {
+            ServiceResult result = new();
+
+            // Check Email
+            var userInDb = await _userManager.FindByEmailAsync(model.Email);
+            if (userInDb is null/* || !userInDb.EmailConfirmed*/)
+            {
+                result.Msg = "Sorry WE cant Found Your Account";
+                return result;
+            }
+
+            // OTP Validation
+            var otp = _context.RefreshTokens.SingleOrDefault(r => r.Token == model.OTP);
+            if (otp is null || !otp.IsActive)
+            {
+                result.Msg = "Your OTP Has Expired, Please try to send another OTP";
+                return result;
+            }
+
+            // Change the Password
+            var removePassword = await _userManager.RemovePasswordAsync(userInDb);
+            if (!removePassword.Succeeded)
+            {
+                result.Msg = "sorry, something went wrong, please try again";
+                return result;
+            }
+
+            var addNewPassword = await _userManager.AddPasswordAsync(userInDb, model.NewPassword);
+            if (!addNewPassword.Succeeded)
+            {
+                result.Msg = string.Empty;
+                foreach (var e in addNewPassword.Errors)
+                    result.Msg += "\n" + e.Description;
+
+                return result;
+            }
+
+            result.IsSucceded = true;
+            result.Msg = "Your Password Changed Successfully";
+
+            // send email with Otp
+            string template = $"<p>Your Password had resest Now.</p> <p>If it is not You Contact with Support team On Our Application, if it is you, just ignore this Email</p> <p>You Get this Message Because WE want to tell You every thing about your Account.</p>";
+            _mailingService.SendEmail(model.Email, "Forget Password", template);
+
+            return result;
+        }
+
+
+
+
         // Private Methods
         private async Task<AuthanticationResponseDto> CreateAuthTecket(ApplicationUser user)
         {
@@ -250,9 +337,17 @@ namespace MealMonkey.Application.Services.Authantication
             return new RefreshToken()
             {
                 Token = token,
-                ExpiresOn = DateTime.UtcNow.AddMinutes(_jwt.RefreshTokenDurationInDays), // just to test Change [AddMinutes] To [AddDayes]
+                ExpiresOn = DateTime.UtcNow.AddDays(_jwt.RefreshTokenDurationInDays),
                 CreatedOn = DateTime.UtcNow
             };
+        }
+
+        private int GenerateOTP()
+        {
+            Random random = new();
+            int otp = random.Next(100000, 999999);
+
+            return otp;
         }
     }
 }
