@@ -10,10 +10,6 @@ namespace MealMonkey.Application.Services.Authantication
 
         Task<ServiceResult> ChangePasswordAsync(ChangePasswordDto model, string currentUserId);
 
-        Task<ServiceResult> ForgetPassword(ForgetPasswordDto model);
-        
-        Task<ServiceResult> ResetPassword(ResetPasswordDto model);
-
         Task<AuthanticationResponseDto> RefreshTokenAsync(RefreshTokenDto model);
 
         Task<bool> RevokeTokenAsync(RefreshTokenDto model, string currentUserId);

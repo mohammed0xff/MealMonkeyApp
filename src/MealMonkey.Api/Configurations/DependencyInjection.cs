@@ -11,7 +11,7 @@ namespace MealMonkey.Api.Configurations
     {
         public static IServiceCollection RegisterCustomServises(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<JWT>(configuration.GetSection(nameof(JWT)));
+            services.Configure<JWTSettings>(configuration.GetSection(nameof(JWTSettings)));
 
             services.AddScoped<IAuthanticationService, AuthanticationService>();
             services.AddScoped<IManageService, ManageService>();

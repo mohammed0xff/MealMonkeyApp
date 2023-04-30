@@ -18,10 +18,15 @@ namespace MealMonkey.Application.Services.Authantication
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
-        private readonly JWT _jwt;
+        private readonly JWTSettings _jwt;
         private readonly IMailingService _mailingService;
 
-        public AuthanticationService(UserManager<ApplicationUser> userManager, ApplicationDbContext context, IOptions<JWT> jwt, IMailingService mailingService)
+        public AuthanticationService(
+            IOptions<JWTSettings> jwt, 
+            IMailingService mailingService,
+            UserManager<ApplicationUser> userManager, 
+            ApplicationDbContext context 
+            )
         {
             _userManager = userManager;
             _context = context;
@@ -108,9 +113,6 @@ namespace MealMonkey.Application.Services.Authantication
             return serviceResult;
         }
 
-
-
-
         // Refresh Token
         public async Task<AuthanticationResponseDto> RefreshTokenAsync(RefreshTokenDto model)
         {
@@ -163,7 +165,10 @@ namespace MealMonkey.Application.Services.Authantication
             // Revoke all RefreshTokens related with this user
             try
             {
-                var userRefreshTokens = _context.RefreshTokens.Where(r => r.UserId == currentUserId && r.RevokedOn == null).ToList();
+                var userRefreshTokens = _context.RefreshTokens
+                    .Where(r => r.UserId == currentUserId && r.RevokedOn == null)
+                    .ToList();
+                
                 foreach (var token in userRefreshTokens)
                 {
                     token.RevokedOn = DateTime.UtcNow;
@@ -177,9 +182,6 @@ namespace MealMonkey.Application.Services.Authantication
                 return false;
             }
         }
-
-
-
 
         // Forget Password
         public async Task<ServiceResult> ForgetPasswordAsync(ForgetPasswordDto model)
@@ -264,9 +266,6 @@ namespace MealMonkey.Application.Services.Authantication
 
             return result;
         }
-
-
-
 
         // Private Methods
         private async Task<AuthanticationResponseDto> CreateAuthTecket(ApplicationUser user)

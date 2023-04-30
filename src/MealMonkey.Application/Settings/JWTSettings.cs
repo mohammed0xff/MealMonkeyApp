@@ -1,6 +1,6 @@
 namespace MealMonkey.Application.Settings
 {
-    public class JWT
+    public class JWTSettings
     {
         public string Key { get; set; }
         public string Issuer { get; set; }

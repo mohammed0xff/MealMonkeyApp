@@ -1,11 +1,14 @@
-﻿using System.Net.Mail;
+﻿using MealMonkey.Application.Settings;
+using Microsoft.Extensions.Options;
+using System.Net;
+using System.Net.Mail;
 
 namespace MealMonkey.Application.Services.Mailing
 {
     public class MailingService : IMailingService
     {
-        private readonly MailingSetting _mailingSetting;
-        public MailingService(IOptions<MailingSetting> options)
+        private readonly MailingSettings _mailingSetting;
+        public MailingService(IOptions<MailingSettings> options)
         {
             _mailingSetting = options.Value;
         }

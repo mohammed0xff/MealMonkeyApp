@@ -7,7 +7,6 @@ namespace MealMonkey.Application.Common
         [Required, EmailAddress]
         public string Email { get; set; }
 
-
         [Required]
         [StringLength(100, MinimumLength = 6)]
         [DataType(DataType.Password)]
