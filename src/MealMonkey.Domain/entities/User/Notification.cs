@@ -11,6 +11,6 @@
         public Guid UserId { get; set; }
 
         // Navigation Propert
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }

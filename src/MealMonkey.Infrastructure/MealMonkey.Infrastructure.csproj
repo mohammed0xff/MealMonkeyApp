@@ -8,12 +8,18 @@
 	<ItemGroup>
 		<PackageReference Include="EntityFrameworkCore.Exceptions.SqlServer" Version="6.0.3.1" />
 
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 			
-		<PackageReference Include="Microsoft.EntityFrameworkCore.relational" Version="7.0.3" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.sqlserver" Version="7.0.3" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.relational" Version="7.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.sqlserver" Version="7.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\MealMonkey.Domain\MealMonkey.Domain.csproj" />

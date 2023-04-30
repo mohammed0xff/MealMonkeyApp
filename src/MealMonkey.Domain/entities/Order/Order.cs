@@ -19,7 +19,7 @@ namespace MealMonkey.Domain.Entities.OrderEntities
         public Guid CartId { get; set; }
 
         // Navigation Properties
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public Address Address { get; set; }
         public Cart Cart { get; set; }

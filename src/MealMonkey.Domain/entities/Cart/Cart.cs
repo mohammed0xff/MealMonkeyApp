@@ -12,7 +12,7 @@ namespace MealMonkey.Domain.Entities.CartEntities
         public Guid? OrderId { get; set; }
 
         // Navigation Properties
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
         public Order Order { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
     }

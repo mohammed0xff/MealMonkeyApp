@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace MealMonkey.Infrastructure.Configurations.UserConfigs
 {
-    public class UserConfigurations : IEntityTypeConfiguration<User>
+    public class UserConfigurations : IEntityTypeConfiguration<ApplicationUser>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             builder.HasKey(u => u.Id);
-            
-            builder.ToTable(nameof(ApplicationDbContext.Users));
-            
+
+            builder.Property(u => u.Id).ValueGeneratedOnAdd();
+
             builder.Property(u => u.FirstName)
                 .IsRequired()
                 .HasMaxLength(15)
@@ -22,20 +22,13 @@ namespace MealMonkey.Infrastructure.Configurations.UserConfigs
                 .HasMaxLength(15)
                 .IsUnicode();
 
-            builder.Property(u => u.PhoneNumber)
-                .HasMaxLength(20);
 
-            builder.Property(u => u.Email)
-                .IsRequired()
-                .HasMaxLength(100);
-
-            builder.Property(u => u.HashPassword)
-                .IsRequired()
-                .HasMaxLength(200);
-
-            builder.Property(u => u.CreatedAt)
-                .IsRequired()
-                .HasDefaultValue(DateTime.UtcNow);
+            // Relationships
+            // RefreshToken
+            builder.HasMany(u => u.RefreshTokens)
+                .WithOne()
+                .HasForeignKey(r => r.UserId)
+                .IsRequired();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace MealMonkey.Infrastructure.Configurations.AddressConfigs
                 .IsRequired();
 
             // User
-            builder.HasOne<User>()
+            builder.HasOne<ApplicationUser>()
                 .WithMany(u => u.Addresses)
                 .HasForeignKey(a => a.UserId)
                 .IsRequired(false);
