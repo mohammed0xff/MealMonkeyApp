@@ -1,4 +1,5 @@
 using MealMonkey.Api.Configurations;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -18,6 +19,10 @@ builder.Services.AddAuthenticationConfig(builder.Configuration);
 
 
 builder.Services.RegisterCustomServises(builder.Configuration);
+
+
+//Adding MediatR
+builder.Services.AddMediatR(typeof(MealMonkey.Application.Features.Category.AddCategory.CreateCategoryHandler).Assembly);
 
 var app = builder.Build();
 
