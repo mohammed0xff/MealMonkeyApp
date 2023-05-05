@@ -22,7 +22,7 @@ builder.Services.RegisterCustomServises(builder.Configuration);
 
 
 //Adding MediatR
-builder.Services.AddMediatR(typeof(MealMonkey.Application.Features.Category.AddCategory.CreateCategoryHandler).Assembly);
+builder.Services.AddMediatR(typeof(MealMonkey.Application.IAssemplyMaker).Assembly);
 
 var app = builder.Build();
 
